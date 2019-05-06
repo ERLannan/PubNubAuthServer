@@ -40,23 +40,25 @@ You will need MongoDB, I recommend using mLab www.mlab.com
 
 Once you have signed up for PubNub and have your database ready, you can edit the keys_dev.js file. You will need to add the following keys:
 
-mongoURI: URI_TO_YOUR_MONGO_DB,
+````mongoURI: URI_TO_YOUR_MONGO_DB,
 publish: PUBNUB_PUBLISH_KEY,
 subscribe: PUBNUB_SUBSCRIPT_KEY,
-secret: PUBNUB_SECRET_KEY
+secret: PUBNUB_SECRET_KEY```
+
 
 On your client in your login method you will receive a JWT Token in your response, you will need to use this token as your authkey when initializing PubNub on your client.
 
 This example shows calling the api, receiving the token from the response, storing it to local storage,
-'''
-.post('/api/users/login', userData)
+
+```.post('/api/users/login', userData)
 .then(res => {
 const { token } = res.data;
 //store token to local storage
 localStorage.setItem('jwtToken', token);
 //set token to auth header
 setAuthToken(token);
-})
-'''
+})```
+
 
 You can use jwt-decode to decode the token and access the user data - https://www.npmjs.com/package/jwt-decode
+````
